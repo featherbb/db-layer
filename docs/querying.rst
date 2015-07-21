@@ -450,13 +450,21 @@ Ordering
 these should **not** be passed directly from user input.*
 
 Two methods are provided to add ``ORDER BY`` clauses to your query.
-These are ``order_by_desc`` and ``order_by_asc``, each of which takes a
-column name to sort by. The column names will be quoted.
+These are ``order_by_desc``, ``order_by_asc`` and ``order_by``
+each of which takes a column name to sort by. The column names will
+be quoted.
 
 .. code-block:: php
 
     <?php
-    $people = ORM::for_table('person')->order_by_asc('gender')->order_by_desc('name')->find_many();
+    $people = ORM::for_table('person')->order_by_asc('gender')->order_by_desc('name')->order_by('age')->find_many();
+
+You can also do multiple ordering.
+
+.. code-block:: php
+
+    <?php
+    $people = ORM::for_table('person')->order_by_many(array('gender' => 'DESC', 'name' => 'ASC'), 'age', 'size')->find_many();
 
 If you want to order by something other than a column name, then use the
 ``order_by_expr`` method to add an unquoted SQL expression as an
