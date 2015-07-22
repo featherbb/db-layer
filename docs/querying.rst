@@ -725,6 +725,22 @@ method to control which columns get returned.
         ->join('person', array('p1.parent', '=', 'p2.id'), 'p2')
         ->find_many();
 
+The ``join`` methods also take an optional fourth parameter, which
+allows to join on a parameter. It is quoted automatically.
+
+.. code-block:: php
+
+    <?php
+    $results = ORM::for_table('person')
+        ->table_alias('p1')
+        ->select('p1.*')
+        ->select('p2.name', 'parent_name')
+        ->join('person', array('p1.parent', '=', 3), 'p2', true)
+        ->find_many();
+
+    // Creates SQL:
+    SELECT p1.* FROM `person` JOIN `person` ON `p1`.`parent` = '3' ORDER BY `person`.`name` ASC
+
 Raw JOIN clauses
 '''''''''''''''''
 
