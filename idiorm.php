@@ -1626,7 +1626,7 @@
         public function having_id_is($id)
         {
             return (is_array($this->_get_id_column_name())) ?
-                $this->having($this->_get_compound_id_column_values($value)) :
+                $this->having($this->_get_compound_id_column_values($id), null) :
                 $this->having($this->_get_id_column_name(), $id);
         }
 
