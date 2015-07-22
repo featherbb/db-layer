@@ -70,6 +70,7 @@ Changelog
 * Add `order_by_many` method [[adaur](http://github.com/adaur)]
 * Update `where_any_is` to support IS NULL and IS NOT NULL [[adaur](http://github.com/adaur)]
 * Add no escape option for joins methods [[adaur](http://github.com/adaur)]
+* Fix autoincremented compound keys inserts [[lrlopez](https://github.com/lrlopez)]
 
 #### 1.5.1 - release 2014-06-23
 
