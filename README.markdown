@@ -1,16 +1,7 @@
-Idiorm
+Idiorm-based FeatherBB Database Layer
 ======
 
-[![Build Status](https://travis-ci.org/j4mie/idiorm.png?branch=master)](https://travis-ci.org/j4mie/idiorm) [![Latest Stable Version](https://poser.pugx.org/j4mie/idiorm/v/stable.png)](https://packagist.org/packages/j4mie/idiorm) [![Total Downloads](https://poser.pugx.org/j4mie/idiorm/downloads.png)](https://packagist.org/packages/j4mie/idiorm) [![Code Climate](https://codeclimate.com/github/j4mie/idiorm/badges/gpa.svg)](https://codeclimate.com/github/j4mie/idiorm)
-
 [http://j4mie.github.com/idiormandparis/](http://j4mie.github.com/idiormandparis/)
-
----
-### Feature complete
-
-Idiorm is now considered to be feature complete as of version 1.5.0. Whilst it will continue to be maintained with bug fixes there will be no further new features added from this point on.
-
-**Please do not submit feature requests or pull requests adding new features as they will be closed without ceremony.**
 
 ---
 
@@ -19,8 +10,6 @@ A lightweight nearly-zero-configuration object-relational mapper and fluent quer
 Tested on PHP 5.2.0+ - may work on earlier versions with PDO and the correct database drivers.
 
 Released under a [BSD license](http://en.wikipedia.org/wiki/BSD_licenses).
-
-**See Also: [Paris](http://github.com/j4mie/paris), an Active Record implementation built on top of Idiorm.**
 
 Features
 --------
@@ -75,6 +64,12 @@ foreach ($tweets as $tweet) {
 
 Changelog
 ---------
+
+#### 1.5.2 - release 2015-??-??
+
+* Add `order_by_many` method [[adaur](http://github.com/adaur)]
+* Update `where_any_is` to support IS NULL and IS NOT NULL [[adaur](http://github.com/adaur)]
+* Add no escape option for joins methods [[adaur](http://github.com/adaur)]
 
 #### 1.5.1 - release 2014-06-23
 
