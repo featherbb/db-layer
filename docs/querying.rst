@@ -325,11 +325,11 @@ associative array that contains a multiple conditions.
     $people = ORM::for_table('person')
                 ->where_any_is(array(
                     array('name' => 'Joe', 'age' => 10),
-                    array('name' => 'Fred', 'age' => 20)))
+                    array('name' => 'Fred', 'age' => 20, 'weight' => 'IS NULL')))
                 ->find_many();
 
     // Creates SQL:
-    SELECT * FROM `widget` WHERE (( `name` = 'Joe' AND `age` = '10' ) OR ( `name` = 'Fred' AND `age` = '20' ));
+    SELECT * FROM `widget` WHERE (( `name` = 'Joe' AND `age` = '10' ) OR ( `name` = 'Fred' AND `age` = '20' AND `weight` = IS NULL ));
 
 By default, it uses the equal operator for every column, but it can be overriden for any
 column using a second parameter:
