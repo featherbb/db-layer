@@ -96,6 +96,20 @@ using an array as the parameter:
         'role_id' => 10
     ));
 
+You can also find a single column:
+
+.. code-block:: php
+
+    <?php
+    $age = ORM::for_table('user_role')->where('name', 'Jack')->find_one_col('age');
+
+This is a shortcut for:
+
+.. code-block:: php
+
+    <?php
+    $age = ORM::for_table('user_role')->select('age')->where('name', 'Jack')->get('age');
+
 
 Multiple records
 ^^^^^^^^^^^^^^^^

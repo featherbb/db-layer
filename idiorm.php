@@ -225,7 +225,7 @@
         {
             self::$_config = array();
         }
-        
+
         /**
          * Despite its slightly odd name, this is actually the factory
          * method used to acquire instances of the class. It is named
@@ -503,13 +503,13 @@
 
             self::$_last_query = $bound_query;
             self::$_query_log[$connection_name][] = $bound_query;
-            
-            
+
+
             if(is_callable(self::$_config[$connection_name]['logger'])){
                 $logger = self::$_config[$connection_name]['logger'];
                 $logger($bound_query, $query_time);
             }
-            
+
             return true;
         }
 
@@ -639,6 +639,33 @@
             }
 
             return $this->_create_instance_from_row($rows[0]);
+        }
+
+        /**
+         * Tell the ORM that you are expecting a single column
+         * back from your query, and execute it. Will return
+         * the single result you asked for.
+         */
+        public function find_one_col($col)
+        {
+            if (!is_string($col)) {
+                return null;
+            }
+
+            $column = $this->_quote_identifier($col);
+
+            $select = $this->_add_result_column($column);
+            $select->limit(1);
+
+            $rows = $select->_run();
+
+            if (empty($rows)) {
+                return false;
+            }
+
+            $row = $select->_create_instance_from_row($rows[0]);
+
+            return isset($row->_data[$col]) ? $row->_data[$col] : null;
         }
 
         /**
@@ -987,7 +1014,7 @@
          * ON `user`.`id` = `profile`.`user_id`
          *
          * The fourth argument specifies an alias for the joined table.
-         * 
+         *
          * The final argument specifies is the last column should be escaped
          */
         protected function _add_join_source($join_operator, $table, $constraint, $table_alias=null, $no_escape_second_col=false)
@@ -1247,7 +1274,7 @@
                 return implode(', ', $db_fields);
             }
         }
-        
+
         /**
          * Helper method that filters a column/value array returning only those
          * columns that belong to a compound primary key.
@@ -1479,7 +1506,7 @@
         {
             return $this->_add_where($clause, $parameters);
         }
-        
+
         /**
          * Add a LIMIT to the query
          */
@@ -1531,7 +1558,7 @@
         {
             return $this->_add_order_by($column_name, '');
         }
-        
+
         /**
          * Add columns to the list of columns returned by the ORDER BY
          * query. This defaults to '*'. Many columns can be supplied
@@ -1557,7 +1584,7 @@
             }
             return $this;
         }
-        
+
         /**
          * Add an unquoted expression as an ORDER BY clause
          */
@@ -2575,7 +2602,7 @@
         {
             return $this->get_results();
         }
-        
+
         /**
          * Get the number of records in the result set
          * @return int
@@ -2614,7 +2641,7 @@
         {
             return $this->_results[$offset];
         }
-        
+
         /**
          * ArrayAccess
          * @param int|string $offset
