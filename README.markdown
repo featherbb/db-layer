@@ -72,6 +72,7 @@ Changelog
 * Add no escape option for joins methods [[adaur](http://github.com/adaur)]
 * Fix autoincremented compound keys inserts [[lrlopez](https://github.com/lrlopez)]
 * Add `find_one_col` method [[adaur](http://github.com/adaur)]
+* Add `update_many` method [[adaur](http://github.com/adaur)]
 
 #### 1.5.1 - release 2014-06-23
 

@@ -66,7 +66,21 @@ update multiple properties at once, by passing in an associative array:
         'age'  => 20
     ));
 
-    // Syncronise the object with the database
+    // Synchronise the object with the database
+    $person->save();
+
+You can also update multiple results:
+
+.. code-block:: php
+
+    <?php
+    // We will update all the persons aged 23
+    $person = ORM::for_table('person')->where('age', 23);
+
+    // The following updates all the entries found above
+    $person->update_many('age', 24);
+
+    // Synchronise the object with the database
     $person->save();
 
 Properties containing expressions
