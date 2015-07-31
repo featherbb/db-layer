@@ -2173,7 +2173,7 @@
                 $this->_dirty_fields[$field] = $value;
                 if (false === $expr and isset($this->_expr_fields[$field])) {
                     unset($this->_expr_fields[$field]);
-                } elseif (true === $expr) {
+                } elseif (true === $expr || $value == 'NULL') {
                     $this->_expr_fields[$field] = true;
                 }
             }
