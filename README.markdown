@@ -73,6 +73,8 @@ Changelog
 * Fix autoincremented compound keys inserts [[lrlopez](https://github.com/lrlopez)]
 * Add `find_one_col` method [[adaur](http://github.com/adaur)]
 * Add `update_many` method [[adaur](http://github.com/adaur)]
+* Add `update_many_expr` method [[adaur](http://github.com/adaur)]
+* Allow direction in `order_by` method [[adaur](http://github.com/adaur)]
 
 #### 1.5.1 - release 2014-06-23
 
